@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Floral Stock Ticker</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-image: url('https://www.transparenttextures.com/patterns/flowers.png'); /* Floral background */
+      background-color: #fff0f5;
+      background-repeat: repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .floral-frame {
+      background-color: red;
+      border: 15px solid transparent;
+      padding: 20px;
+      border-image: url('https://i.imgur.com/4AiXzf8.png') 30 round; /* Replace with your preferred floral border */
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      width: 500px;
+      text-align: center;
+      color: white;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="floral-frame" id="ticker-box">
+    Loading stock data...
+  </div>
+
+  <script>
+    function getMockStockData() {
+      const stocks = ['AAPL', 'GOOGL', 'MSFT', 'TSLA', 'AMZN'];
+      return stocks.map(stock => {
+        const price = (Math.random() * 1000 + 100).toFixed(2);
+        return `${stock}: $${price}`;
+      }).join(' | ');
+    }
+
+    function updateTicker() {
+      document.getElementById('ticker-box').textContent = getMockStockData();
+    }
+
+    setInterval(updateTicker, 3000);
+    updateTicker();
+  </script>
+
+</body>
+</html>
